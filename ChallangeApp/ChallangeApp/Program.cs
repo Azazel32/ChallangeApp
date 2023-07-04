@@ -1,23 +1,25 @@
-﻿int number = 0;
-Console.WriteLine("Podaj liczbe calkowita: ");
-number = int.Parse(Console.ReadLine());
-string numberInString = number.ToString();
-char[] chars = numberInString.ToArray();
-List<int> counter = new List<int>();
-foreach (char letter in chars)
+﻿using ChallangeApp;
+
+Employee employee_1 = new Employee("Kacper", "Nowak", "20");
+Employee employee_2 = new Employee("Adam", "Kowalik", "34");
+Employee employee_3 = new Employee("Jakub", "Mietczynski", "18");
+List<Employee> employees = new List<Employee>() { employee_1, employee_2, employee_3};
+Random rand = new Random();
+foreach (Employee employee in employees)
+for (int i = 0; i < 5; i++)
 {
-    if (letter == '0') counter[0]++;
-    else if (letter == '1') counter[1]++;
-    else if (letter == '2') counter[2]++;
-    else if (letter == '3') counter[3]++;
-    else if (letter == '4') counter[4]++;
-    else if (letter == '5') counter[5]++;
-    else if (letter == '6') counter[6]++;
-    else if (letter == '7') counter[7]++;
-    else if (letter == '8') counter[8]++;
-    else if (letter == '9') counter[9]++;
+    employee.AddScore(rand.Next(1,11));
 }
-foreach (int i in counter)
+int index = 0;
+for (int i = 1;i < 3; i++)
 {
-    Console.WriteLine(i + "-->" + counter[i]);
+    if (employees[index].Result > employees[i].Result)
+        index = i;
 }
+if (index != 0)
+{
+    Console.WriteLine(" Imie:" + employees[index].Name + " Nazwisko:" + employees[index].LastName +" wiek:" + employees[index].Age + " Punkty:"+ employees[index].Result);
+}
+
+
+
