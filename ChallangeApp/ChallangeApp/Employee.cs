@@ -17,12 +17,21 @@
             {
                 this.grades.Add(grade);
             }
+            else
+            {
+                Console.WriteLine("invalid grade value");
+            }
+            
         }
         public void AddGrade(string grade) 
         {
             if (float.TryParse(grade,out float result))
             {
                 this.AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine("String is not float");
             }
         }
         public void AddGrade(double grade)
@@ -37,17 +46,6 @@
         {
             this.AddGrade((float)grade);
         }
-
-
-
-
-
-
-
-
-
-
-
         public Statistics GetStatistics()
         {
             var statistics= new Statistics();
