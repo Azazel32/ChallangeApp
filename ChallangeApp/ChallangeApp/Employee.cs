@@ -1,32 +1,35 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-namespace ChallangeApp
+﻿namespace ChallangeApp
 {
     public class Employee
     {
-        public List<int> Score = new List<int>();
+        public List<float> grades = new List<float>();
 
-        public Employee(string name, string last_name, string age) 
+        public Employee(string name, string last_name) 
         {
             this.Name = name;
             this.LastName = last_name;
-            this.Age = age;
         }
-
         public string Name { get; private set; }
         public string LastName { get; private set;}
-        public string Age { get; private set;} 
-        public int Result 
-        { 
-            get
-            {
-                return this.Score.Sum();
-            }
-        }
-
-        public void AddScore(int score)
+        public void AddGrade(float grade)
         {
-            this.Score.Add(score);
+            this.grades.Add(grade);
+        }
+        public Statistics GetStatistics()
+        {
+            var statistics= new Statistics();
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+            statistics.Average = 0;
+            
+            foreach (var grade in this.grades) 
+            {
+                statistics.Average += grade;
+                statistics.Max=Math.Max(statistics.Max, grade);
+                statistics.Min=Math.Min(statistics.Min, grade);
+            }
+            statistics.Average /= grades.Count;
+            return statistics;
         }
 
         
