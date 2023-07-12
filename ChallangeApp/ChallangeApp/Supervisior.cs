@@ -6,9 +6,9 @@
 
         int IEmployee.Age => throw new NotImplementedException();
 
-        string IEmployee.Lastname => throw new NotImplementedException();
+        string IEmployee.LastName => throw new NotImplementedException();
 
-        char IEmployee.Sex => throw new NotImplementedException();
+       
 
         public void AddGrade(char grade)
         {
@@ -83,8 +83,7 @@
                     this.AddGrade(0);
                     break;
                 default:
-
-                    break;
+                    throw new Exception("valid input");
             }
         }
 
