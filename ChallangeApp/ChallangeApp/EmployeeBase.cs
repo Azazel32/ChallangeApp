@@ -9,10 +9,21 @@
             this.Age = age;
 
         }
+        public delegate void GradeAddedDelegate(object sender, EventArgs args);
+        public event GradeAddedDelegate GradeAdded;
+        public void OnGradeAdded()
+        {
+            if (GradeAdded != null)
+            {
+                GradeAdded(this, new EventArgs());
+            }
+        }
+        
+        
 
         public  string Name { get; private set; }
         public  int Age { get; private set; }
-        public  string LastName { get; }
+        public  string LastName { get; private set; }
         
 
         public abstract void AddGrade(char grade);

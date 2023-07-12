@@ -3,6 +3,7 @@
     public class EmployeeInMemory : EmployeeBase
     {
         public List<float> grades = new List<float>();
+        
         public EmployeeInMemory(string name, string lastname, int age)
             : base(name, lastname, age)
         {
@@ -76,6 +77,7 @@
             if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
+                base.OnGradeAdded();
             }
             else
             {

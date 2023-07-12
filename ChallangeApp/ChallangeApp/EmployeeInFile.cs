@@ -82,6 +82,7 @@ namespace ChallangeApp
                 {
                     writer.WriteLine(grade);
                 }
+                OnGradeAdded();
             }
             else
             {
