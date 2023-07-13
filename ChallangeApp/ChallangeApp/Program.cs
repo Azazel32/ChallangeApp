@@ -1,7 +1,7 @@
 ﻿using ChallangeApp;
 Console.WriteLine("Witaj w programie do oceny pracownikow");
 Console.WriteLine("======================================");
-EmployeeInFile employee_1 = new EmployeeInFile("Kacper", "Nowak",18);
+var employee_1 = new EmployeeInFile("Kacper", "Nowak",18);
 employee_1.AddGrade(80);
 employee_1.AddGrade(60);
 employee_1.AddGrade(40);

@@ -93,53 +93,18 @@ namespace ChallangeApp
         public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-            statistics.Average = 0;
+            
             if (File.Exists(fileName))
             {
                 using (var reader = File.OpenText(fileName))
                 {
                     var line = reader.ReadLine();
-                    int Counter = 0;
-                    while (line != null)
+                    while ((line=reader.ReadLine()) != null)
                     {
-                        var number = float.Parse(line);
-                        statistics.Average += number;
-                        statistics.Max = Math.Max(statistics.Max, number);
-                        statistics.Min = Math.Min(statistics.Min, number);
-                        Counter++;
-                        line = reader.ReadLine();
+                        var grade = float.Parse(line);
+                        statistics.AddGrade(grade);
                     }
-                    statistics.Average /= Counter;
-                    switch (statistics.Average)
-                    {
-                        case var average when average >= 80:
-                            {
-                                statistics.AverageLetter = 'A';
-                            }
-                            break;
-                        case var average when average >= 60:
-                            {
-                                statistics.AverageLetter = 'B';
-                            }
-                            break;
-                        case var average when average >= 40:
-                            {
-                                statistics.AverageLetter = 'C';
-                            }
-                            break;
-                        case var average when average >= 20:
-                            {
-                                statistics.AverageLetter = 'D';
-                            }
-                            break;
-                        default:
-                            {
-                                statistics.AverageLetter = 'E';
-                            }
-                            break;
-                    }
+                    
                 }
 
             }
